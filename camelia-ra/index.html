@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CAMELIA · Realidad aumentada</title>
+  <meta name="description" content="Experiencia de realidad aumentada de CAMELIA, de Ana Elizabeth Novoa Aguilar.">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Librerías incluidas en el proyecto (versiones de los ejemplos oficiales de MindAR) -->
+  <script src="lib/aframe-v1.5.0.min.js"></script>
+  <script src="lib/mindar-image-aframe.prod.js"></script>
+  <script src="js/sprite-sheet.js"></script>
+</head>
+<body>
+  <!-- 1. Pantalla de inicio -->
+  <section id="start" class="screen">
+    <div class="start-inner">
+      <p class="eyebrow">Realidad aumentada</p>
+      <h1>CAMELIA</h1>
+      <p class="lead">Ten a mano el póster, impreso o en otra pantalla. Te pediremos permiso para usar la cámara.</p>
+      <button id="btn-start" class="btn btn-gold" type="button" disabled>Cargando…</button>
+      <p id="start-error" class="error" hidden></p>
+      <p class="credit">Un juego de Ana Elizabeth Novoa Aguilar</p>
+    </div>
+  </section>
+
+  <!-- 2. Mensajes de estado sobre la cámara -->
+  <div id="status" class="status" hidden></div>
+
+  <!-- 3. Texto de la historia (solo visible con el póster reconocido) -->
+  <div id="story" class="story" hidden>
+    <p>“Este broche conserva el recuerdo de mi madre. Mientras recuerde mi nombre, nadie podrá arrebatármelo”.</p>
+  </div>
+
+  <!-- 4. Controles -->
+  <div id="controls" class="controls" hidden>
+    <button id="btn-story" class="btn btn-gold" type="button" aria-pressed="false">Revelar historia</button>
+    <button id="btn-pause" class="btn btn-dark" type="button" aria-pressed="false">Pausar</button>
+  </div>
+
+  <!-- Escena de RA: MindAR reconoce el póster y ancla el contenido a él -->
+  <a-scene id="scene"
+    mindar-image="imageTargetSrc: assets/targets.mind; autoStart: false; uiLoading: no; uiScanning: no; uiError: no; filterMinCF: 0.0001; filterBeta: 0.001"
+    color-space="sRGB"
+    renderer="colorManagement: true; physicallyCorrectLights: true"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-assets timeout="15000">
+      <img id="tex-camelia" src="assets/camelia_sprite.png" crossorigin="anonymous">
+      <img id="tex-broche" src="assets/broche.png" crossorigin="anonymous">
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false" cursor="rayOrigin: mouse"></a-camera>
+
+    <!-- El ancho del póster mide 1 unidad; su alto, alto/ancho. El origen es el centro del póster. -->
+    <a-entity id="target" mindar-image-target="targetIndex: 0">
+      <a-plane id="camelia"
+        material="src: #tex-camelia; shader: flat; transparent: true; alphaTest: 0.02; side: double"
+        sprite-sheet="frames: 8; columns: 8; rows: 1; fps: 10"
+        width="0.5" height="0.7" position="0 -0.2 0.02"></a-plane>
+      <a-plane id="broche"
+        material="src: #tex-broche; shader: flat; transparent: true; alphaTest: 0.02; side: double"
+        width="0.3" height="0.3" position="0 0.4 0.04" visible="false"></a-plane>
+    </a-entity>
+  </a-scene>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

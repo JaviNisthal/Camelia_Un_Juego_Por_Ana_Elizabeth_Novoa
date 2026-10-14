@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Compilador MindAR</title></head>
+<body>
+<script type="module">
+  // Compilador oficial de MindAR 1.2.5 (el mismo que usa su página web de compilación)
+  import { Compiler } from './mindar-image.prod.js';
+  window.compileTarget = async (src) => {
+    const img = await new Promise((ok, ko) => {
+      const i = new Image();
+      i.onload = () => ok(i);
+      i.onerror = ko;
+      i.src = src;
+    });
+    const compiler = new Compiler();
+    await compiler.compileImageTargets([img], (p) => { window.progress = p; });
+    const buf = await compiler.exportData();
+    let bin = '';
+    const bytes = new Uint8Array(buf);
+    for (let k = 0; k < bytes.length; k += 0x8000) bin += String.fromCharCode(...bytes.subarray(k, k + 0x8000));
+    return btoa(bin);
+  };
+  window.ready = true;
+</script>
+</body>
+</html>

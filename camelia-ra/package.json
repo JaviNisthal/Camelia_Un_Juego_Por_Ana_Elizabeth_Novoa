@@ -1,0 +1,13 @@
+{
+  "name": "camelia-ra",
+  "private": true,
+  "description": "Prototipo de realidad aumentada de CAMELIA (Ana Elizabeth Novoa Aguilar)",
+  "type": "module",
+  "scripts": {
+    "compilar": "node tools/compile_targets.mjs",
+    "probar": "node tools/test_ar.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.48.0"
+  }
+}
