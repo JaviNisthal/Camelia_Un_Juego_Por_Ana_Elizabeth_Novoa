@@ -1,0 +1,39 @@
+{
+  "sprite": {
+    "frames": 8,
+    "columns": 8,
+    "rows": 1,
+    "fps": 10,
+    "frameWidth": 384,
+    "frameHeight": 512,
+    "feetPadding": 14,
+    "durations": [
+      100,
+      100,
+      100,
+      100,
+      167,
+      167,
+      166,
+      100
+    ]
+  },
+  "poster": {
+    "file": "entrega/camelia_poster.png",
+    "width": 2480,
+    "height": 3508,
+    "sha256": "d0f4fc54f2b8e7e93f70b14a845305fc947a5dcf58778bddbf5246c69935b260"
+  },
+  "placement": {
+    "cameliaHeight": 0.5,
+    "cameliaFeetY": -0.5089,
+    "cameliaX": 0.29,
+    "brocheSize": 0.22,
+    "brochePosition": "0.29 0.141 0.06"
+  },
+  "targets": {
+    "compiledFrom": "entrega/camelia_poster.png",
+    "posterSha256": "d0f4fc54f2b8e7e93f70b14a845305fc947a5dcf58778bddbf5246c69935b260",
+    "mindar": "1.2.5"
+  }
+}
