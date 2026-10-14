@@ -164,7 +164,7 @@ def onion(frames, path):
     out.convert("RGB").save(path)
 
 
-def save_gif(frames, path, height, fps, matte=None):
+def save_gif(frames, path, height, durations, matte=None):
     scale = height / frames[0].height
     size = (round(frames[0].width * scale), height)
     out = []
@@ -184,7 +184,7 @@ def save_gif(frames, path, height, fps, matte=None):
             p.putpalette(pal)
             p.info["transparency"] = 255
             out.append(p)
-    kw = dict(save_all=True, append_images=out[1:], duration=round(1000 / fps), loop=0, disposal=2, optimize=False)
+    kw = dict(save_all=True, append_images=out[1:], duration=durations, loop=0, disposal=2, optimize=False)
     if not matte:
         kw["transparency"] = 255
     out[0].save(path, **kw)
@@ -196,6 +196,7 @@ def main():
     ap.add_argument("--frames", type=int, default=8)
     ap.add_argument("--order", help="orden de los fotogramas detectados, p. ej. 1,2,3,4,5,6,7,8")
     ap.add_argument("--fps", type=float, default=10)
+    ap.add_argument("--durations", help="milisegundos por fotograma, p. ej. 100,100,100,100,167,167,166,100")
     ap.add_argument("--tol", type=int, default=28, help="tolerancia del blanco de fondo")
     ap.add_argument("--ar-height", type=int, default=512)
     ap.add_argument("--gif-height", type=int, default=480)
@@ -269,8 +270,12 @@ def main():
         fr.save(os.path.join(ROOT, "entrega", "fotogramas", f"camelia_caminata_{k:02d}.png"))
 
     # GIF para la actividad
-    save_gif(frames, os.path.join(ROOT, "entrega", "camelia_caminata.gif"), args.gif_height, args.fps)
-    save_gif(frames, os.path.join(ROOT, "entrega", "camelia_caminata_fondo_arena.gif"), args.gif_height, args.fps,
+    durations = [round(1000 / args.fps)] * len(frames)
+    if args.durations:
+        durations = [int(x) for x in args.durations.split(",")]
+        assert len(durations) == len(frames), "--durations necesita un valor por fotograma"
+    save_gif(frames, os.path.join(ROOT, "entrega", "camelia_caminata.gif"), args.gif_height, durations)
+    save_gif(frames, os.path.join(ROOT, "entrega", "camelia_caminata_fondo_arena.gif"), args.gif_height, durations,
              matte=(217, 185, 138))
 
     # lámina horizontal para la textura animada de la RA
@@ -280,7 +285,7 @@ def main():
     for k, fr in enumerate(frames):
         sprite.alpha_composite(fr.resize((fw, fh), Image.LANCZOS), (k * fw, 0))
     sprite.save(os.path.join(ROOT, "assets", "camelia_sprite.png"), optimize=True)
-    update_config({"sprite": {"frames": len(frames), "columns": len(frames), "rows": 1, "fps": args.fps,
+    update_config({"sprite": {"frames": len(frames), "columns": len(frames), "rows": 1, "fps": args.fps, "durations": durations,
                               "frameWidth": fw, "frameHeight": fh, "feetPadding": round(pad * fh / H)}})
     print("Listo: entrega/camelia_caminata.gif, entrega/fotogramas/, assets/camelia_sprite.png, revision/")
 

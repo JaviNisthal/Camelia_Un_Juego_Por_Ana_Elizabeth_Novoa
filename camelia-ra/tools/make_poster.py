@@ -110,12 +110,12 @@ def main():
     update_config({
         "poster": {"file": "entrega/camelia_poster.png", "width": W, "height": H, "sha256": sha},
         "placement": {
-            "cameliaHeight": 0.62,
+            "cameliaHeight": 0.5,
             "cameliaFeetY": round(-aspect / 2 + (H - feet_y) / W, 4),
-            "cameliaX": 0,
-            "brocheSize": 0.26,
-            # centrado sobre la cabeza de la Camelia animada
-            "brochePosition": f"0 {round(-aspect / 2 + (H - feet_y) / W + 0.62 + 0.17, 3)} 0.06",
+            "cameliaX": 0.29,  # a la derecha, para no tapar la figura del póster
+            "brocheSize": 0.22,
+            # sobre la cabeza de la Camelia animada
+            "brochePosition": f"0.29 {round(-aspect / 2 + (H - feet_y) / W + 0.5 + 0.15, 3)} 0.06",
         },
     })
     print(f"Póster: {out} ({W}x{H}) sha256={sha[:16]}…")

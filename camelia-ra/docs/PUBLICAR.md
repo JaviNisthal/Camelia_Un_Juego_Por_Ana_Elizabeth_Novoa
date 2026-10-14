@@ -1,24 +1,38 @@
-# Publicar por HTTPS (GitHub Pages, gratis)
+# Publicar en GitHub Pages, paso a paso
 
-La cámara del navegador solo funciona por HTTPS. GitHub Pages lo da de serie.
+La cámara del navegador solo funciona por HTTPS. GitHub Pages lo da gratis.
 
-1. En github.com, crea un repositorio **público** llamado `camelia-ra`.
-2. Pulsa **Add file → Upload files** y arrastra el **contenido** de la carpeta del proyecto: `index.html`, `css/`, `js/`, `lib/` y `assets/`. No subas `node_modules/`. `tools/`, `source/` y `entrega/` son opcionales. Pulsa **Commit changes**.
-3. Ve a **Settings → Pages**. En *Source* elige **Deploy from a branch**, luego la rama `main` y la carpeta `/ (root)`, y pulsa **Save**.
-4. Espera 1–2 minutos. La dirección será `https://TU-USUARIO.github.io/camelia-ra/`.
-5. Abre esa dirección en el teléfono y comprueba que carga.
-6. Solo entonces genera el QR con esa dirección exacta:
-   `python3 tools/make_qr.py https://TU-USUARIO.github.io/camelia-ra/`
+## A. Prepara los archivos (1 min)
+1. Descarga `entrega/camelia-ra-web.zip` y descomprímelo.
+2. Dentro verás `index.html` y las carpetas `assets`, `css`, `js`, `lib` y `licencias`.
 
-Comprueba que en `assets/` estén `targets.mind`, `camelia_sprite.png`, `broche.png` y `config.json`. Sin `targets.mind` la cámara no arranca.
+## B. Crea el repositorio (2 min)
+3. Entra en <https://github.com/new>.
+4. En **Repository name** escribe `camelia-ra`.
+5. Marca **Public**. Pages gratis exige un repositorio público.
+6. Marca **Add a README file** y pulsa **Create repository**.
 
-## Si no puedes compilar `targets.mind` con el script
+## C. Sube la página (2 min)
+7. En el repositorio, pulsa **Add file → Upload files**.
+8. Arrastra **el contenido** de la carpeta descomprimida, no la carpeta en sí: `index.html` y las cinco carpetas. GitHub conserva las subcarpetas al arrastrar.
+9. Comprueba en la lista que aparecen `index.html` y `assets/targets.mind`.
+10. Pulsa **Commit changes**.
 
-Compilador web oficial de MindAR: <https://hiukim.github.io/mind-ar-js-doc/tools/compile>
+## D. Activa Pages (1 min)
+11. Ve a **Settings → Pages**, en el menú de la izquierda.
+12. En **Source** elige **Deploy from a branch**.
+13. En **Branch** elige `main` y la carpeta `/ (root)`. Pulsa **Save**.
+14. Espera 1–2 minutos y recarga. Arriba aparecerá *Your site is live at* `https://TU-USUARIO.github.io/camelia-ra/`.
 
-1. Arrastra **`entrega/camelia_poster.png`**. Tiene que ser ese archivo exacto, sin recortarlo ni exportarlo de nuevo.
-2. Pulsa **Start** y espera a que termine (1–2 minutos).
-3. Pulsa **Download compiled** y guarda el archivo como `assets/targets.mind`, sustituyendo al anterior.
-4. Vuelve a subir `assets/targets.mind` al repositorio.
+## E. Comprueba y genera el QR
+15. Abre esa dirección en el teléfono y pulsa **Iniciar RA**. Si carga la cámara, la publicación funciona.
+16. Pásame la dirección exacta y te genero `entrega/qr_camelia.png` y `entrega/diapositiva_final.png`. Si prefieres hacerlo tú:
+    `python3 tools/make_qr.py https://TU-USUARIO.github.io/camelia-ra/`
 
-Si cambias el póster, aunque sea un píxel, compila de nuevo y vuelve a imprimirlo.
+## Si algo falla
+- **404 en la dirección:** espera 2 minutos más y comprueba que `index.html` está en la raíz del repositorio, no dentro de otra carpeta.
+- **«No se pudo iniciar la cámara»:** revisa el permiso de cámara del navegador en los ajustes del teléfono y que la dirección empiece por `https://`.
+- **No reconoce el póster:** usa el póster impreso o mostrado a buen tamaño, con luz suficiente y sin reflejos. Debe ser exactamente `entrega/camelia_poster.png`.
+
+## Si cambias el póster
+Vuelve a compilar `targets.mind` con `node tools/compile_targets.mjs` o con el compilador web oficial, <https://hiukim.github.io/mind-ar-js-doc/tools/compile>: arrastra `entrega/camelia_poster.png`, pulsa **Start** y luego **Download compiled**, y guárdalo como `assets/targets.mind`. Después súbelo de nuevo al repositorio.

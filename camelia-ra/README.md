@@ -25,10 +25,10 @@ Requisitos: Python 3 con `pip install pillow numpy scipy qrcode`, y Node 18 o su
 
 ```bash
 # 1. Fotogramas, GIF y lámina para la RA (revisa revision/ antes de seguir)
-python3 tools/prepare_sprites.py source/Camelia_sprites_caminata.png
+python3 tools/prepare_sprites.py source/Camelia_sprites_caminata.png --durations 100,100,100,100,167,167,166,100
 # 2. Broche: primero ver las piezas numeradas, después elegir una
 python3 tools/extract_brooch.py source/Camelia_elementos_juego.png
-python3 tools/extract_brooch.py source/Camelia_elementos_juego.png --pieza N
+python3 tools/extract_brooch.py source/Camelia_elementos_juego.png --recuadro 285,190,560,428   # el usado
 # 3. Póster definitivo
 python3 tools/make_poster.py --arena source/Camelia_ambientacion_principal.png --figura source/Camelia_pose_accion.png
 # 4. targets.mind compilado desde ESE póster exacto
@@ -52,7 +52,9 @@ Si no puedes ejecutar el paso 4, usa el compilador web oficial, como se explica 
 
 Si el orden no es correcto, se cambia con `--order 3,4,5,6,7,8,1,2` (o el que corresponda).
 
-## Qué está probado y qué no
+## Estado
 
-- Probado aquí: con imágenes de prueba sintéticas, en Chromium con cámara **simulada**. Pasaron inicio, reconocimiento, animación, pausa y reanudación, revelar historia, pérdida y recuperación del póster (`tools/test_ar.mjs`).
-- Sin probar todavía: la experiencia con tus ilustraciones reales y en un teléfono real. Ver `docs/PRUEBAS.md`.
+- **Hecho con tus ilustraciones:** póster, GIF, fotogramas, broche, lámina de RA y `targets.mind` compilado desde el póster final. Detalles y hallazgos en `docs/PROCESO.md`.
+- **Caminata:** el orden es correcto y el ritmo se ha regularizado, pero la lámina no tiene las poses en que las piernas se cruzan. Se nota un pequeño salto del pie delantero dos veces por ciclo. Para corregirlo hacen falta dos poses nuevas (ver `docs/PROCESO.md`).
+- **Probado:** en Chromium con cámara **simulada**, las 9 comprobaciones pasaron (`revision/`).
+- **Sin probar:** con un teléfono real y el póster impreso (`docs/PRUEBAS.md`). El QR se genera solo cuando exista la URL pública.

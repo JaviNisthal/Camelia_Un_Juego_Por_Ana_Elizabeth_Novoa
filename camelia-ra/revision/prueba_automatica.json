@@ -1,0 +1,51 @@
+{
+  "fecha": "2026-10-14T00:51:01.434Z",
+  "camara": "simulada",
+  "resultados": [
+    {
+      "name": "Pantalla de inicio y botón «Iniciar RA»",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Cámara iniciada (arReady)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Reconocimiento del póster (targetFound)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Animación en bucle (cambian los fotogramas)",
+      "ok": true,
+      "detail": "7 fotogramas distintos en ~0,9 s"
+    },
+    {
+      "name": "Botón Pausar detiene la animación",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Botón Reanudar continúa la animación",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Revelar historia muestra broche y texto",
+      "ok": true,
+      "detail": "“Este broche conserva el recuerdo de mi madre. Mientras recuerde mi nombre, nadie podrá arrebatármelo”."
+    },
+    {
+      "name": "Pérdida del póster oculta contenido y avisa",
+      "ok": true,
+      "detail": "mensaje: «Vuelve a enfocar el póster»"
+    },
+    {
+      "name": "Recupera el póster y vuelve a mostrar la historia abierta",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

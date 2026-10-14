@@ -1,18 +1,13 @@
 # Ilustraciones originales
 
-Coloca aquí tus archivos con estos nombres exactos:
-
 | Archivo | Uso |
 |---|---|
-| `Camelia_diseno_final.png` | referencia del diseño (no se modifica) |
 | `Camelia_vistas_expresiones_final.png` | referencia del diseño (no se modifica) |
 | `Camelia_sprites_caminata.png` | lámina de 8 poses → GIF y textura de RA |
 | `Camelia_ambientacion_principal.png` | fondo del póster |
 | `Camelia_elementos_juego.png` | se extrae el broche |
-| `Camelia_pose_accion.png` | **FALTA**: ver abajo |
+| `Camelia_pose_accion.png` | figura del póster (fondo transparente) |
 
-## Ilustración que falta para el póster
+`Camelia_diseno_final.png` no se recibió. Solo es una referencia y no hace falta para la entrega.
 
-**Camelia en pose de acción, de cuerpo entero.** Por ejemplo: avanzando con el arma en alto, en guardia de combate o a mitad de un salto. Debe tener el mismo diseño que el diseño final (armadura verde oscura, capa roja apagada, cuero marrón, oro envejecido y broche dorado de camelia), sin texto y sobre fondo blanco o transparente. Tamaño mínimo: 2000 px de alto, en PNG.
-
-Ninguna de las láminas actuales tiene una pose de acción. Las poses de caminata no lo son, y el diseño final es una vista de presentación. Si se usara uno de esos dibujos, el póster no cumpliría el requisito.
+Estas copias llegaron comprimidas por el chat. Si tienes los originales a mayor resolución, sustitúyelos con el mismo nombre y vuelve a ejecutar los pasos del README. Recuerda: si cambia el póster, hay que volver a compilar `targets.mind` e imprimir el póster nuevo.

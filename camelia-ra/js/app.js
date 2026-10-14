@@ -26,7 +26,8 @@
   function applyConfig(cfg) {
     const s = cfg.sprite;
     if (s) {
-      cameliaEl.setAttribute('sprite-sheet', { frames: s.frames, columns: s.columns, rows: s.rows, fps: s.fps });
+      cameliaEl.setAttribute('sprite-sheet', { frames: s.frames, columns: s.columns, rows: s.rows, fps: s.fps,
+        durations: (s.durations || []).join(',') });
     }
     const p = cfg.placement || {};
     if (s && p.cameliaHeight) {

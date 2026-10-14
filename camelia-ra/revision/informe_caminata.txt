@@ -1,0 +1,17 @@
+INFORME DE CAMINATA
+Lámina: Camelia_sprites_caminata.png
+Orden usado (numeración de revision/deteccion.png): 1,2,3,4,5,6,7,8
+Lienzo común: 332x443px, línea de pies a 12px del borde inferior
+Alto de cada figura (px): 414, 411, 409, 409, 417, 419, 416, 413
+Variación de alto: 2.4% (normal en caminata: hasta ~5%)
+Cambio entre fotogramas consecutivos (zona de piernas, diferencia media de color; 0 = idénticos):
+  #1 -> #2: 0.054
+  #2 -> #3: 0.061
+  #3 -> #4: 0.098
+  #4 -> #5: 0.137
+  #5 -> #6: 0.093
+  #6 -> #7: 0.044
+  #7 -> #8: 0.098
+  #8 -> #1: 0.058
+Sin saltos bruscos medidos. Confirma a ojo el GIF y revision/papel_cebolla.png:
+la métrica no distingue bien poses simétricas (pierna izquierda/derecha).

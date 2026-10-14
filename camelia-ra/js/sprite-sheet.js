@@ -7,6 +7,8 @@ AFRAME.registerComponent('sprite-sheet', {
     columns: { type: 'int', default: 8 },
     rows: { type: 'int', default: 1 },
     fps: { type: 'number', default: 10 },
+    // milisegundos por fotograma separados por comas; vacío = 1000/fps para todos
+    durations: { type: 'string', default: '' },
     playing: { type: 'boolean', default: true }
   },
 
@@ -19,6 +21,9 @@ AFRAME.registerComponent('sprite-sheet', {
   },
 
   update: function () {
+    this.durations = this.data.durations
+      ? this.data.durations.split(',').map(Number)
+      : null;
     if (this.texture) this.applyRepeat();
   },
 
@@ -46,11 +51,12 @@ AFRAME.registerComponent('sprite-sheet', {
     if (!this.texture || !this.data.playing) return;
     // Evita saltos tras volver de otra pestaña
     this.elapsed += Math.min(delta, 250);
-    const step = 1000 / this.data.fps;
+    let step = this.durations ? this.durations[this.frame] : 1000 / this.data.fps;
     while (this.elapsed >= step) {
       this.elapsed -= step;
       this.frame = (this.frame + 1) % this.data.frames;
       this.showFrame(this.frame);
+      step = this.durations ? this.durations[this.frame] : 1000 / this.data.fps;
     }
   },
 
