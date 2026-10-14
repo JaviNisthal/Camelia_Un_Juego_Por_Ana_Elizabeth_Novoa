@@ -57,5 +57,5 @@ Si el orden no es correcto, se cambia con `--order 3,4,5,6,7,8,1,2` (o el que co
 - **Hecho con tus ilustraciones:** póster, GIF, fotogramas, broche, lámina de RA y `targets.mind` compilado desde el póster final. Detalles y hallazgos en `docs/PROCESO.md`.
 - **Caminata:** el orden es correcto y el ritmo se ha regularizado, pero la lámina no tiene las poses en que las piernas se cruzan. Se nota un pequeño salto del pie delantero dos veces por ciclo. Para corregirlo hacen falta dos poses nuevas (ver `docs/PROCESO.md`).
 - **Probado:** en Chromium con cámara **simulada**, las 9 comprobaciones pasaron (`revision/`).
-- **Publicado:** https://javinisthal.github.io/Claude_Code/ (rama `gh-pages`). QR en `entrega/qr_camelia.png` y diapositiva final en `entrega/diapositiva_final.png`.
+- **Publicado:** https://javinisthal.github.io/Camelia_Un_Juego_Por_Ana_Elizabeth_Novoa/ (rama `gh-pages`). QR en `entrega/qr_camelia.png` y diapositiva final en `entrega/diapositiva_final.png`.
 - **Sin probar:** con un teléfono real y el póster impreso (`docs/PRUEBAS.md`).
